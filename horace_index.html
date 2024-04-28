@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Juego de Horace</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body style="background-image: url('circus_bg.jpg'); background-size: cover;">
+    <header>
+        <h1>El Juego de Horace</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#reglas">Reglas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<audio controls loop>
+  <source src="tu-musica.mp3" type="audio/mp3">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+
+
+    <main>
+        <section id="inicio">
+            <h2>Bienvenidos al circo de juegos de Horace</h2>
+            <p>¡Saludos, queridos visitantes! Soy Horace, vuestro anfitrión en este circo de juegos y enigmas. ¡Es hora de que todo el mundo se divierta y prueben mis juegos! ¿Quieres jugar conmigo?.</p>
+            <img src="horace1.jpg" alt="Horace" width="300">
+            <p>Y aquí, en el corazón de nuestro espectáculo, les presento la misteriosa UFU. Su energía emite un brillo fascinante, ¿no les parece intrigante?</p>
+            <img src="ufu.jpg" alt="UFU" width="300">
+            <p>¿Están listos para adentrarse en este mundo de diversión y desafiar lo desconocido?</p>
+        </section>
+
+        <section id="reglas">
+            <h2>Reglas del Juego</h2>
+            <p>Horace te desafía a descubrir los secretos divertidos en este sitio web. ¡Pero ten cuidado, sus travesuras pueden llevarte a lugares inesperados!</p>
+        </section>
+
+<section id="adivinanza">
+    <h2>Juego de Adivinanzas</h2>
+    <p>¡Hora de poner a prueba tus habilidades! Adivina el número que estoy pensando entre 1 y 10:</p>
+    <form id="guessForm">
+        <label for="guess">Tu elección:</label>
+        <input type="number" id="guess" name="guess" min="1" max="10">
+        <button type="button" onclick="checkGuess()">Adivinar</button>
+    </form>
+    <p id="result"></p>
+</section>
+
+<script>
+    function checkGuess() {
+        var numberToGuess = 7; // Número a adivinar
+        var guess = parseInt(document.getElementById('guess').value);
+
+        if (guess === numberToGuess) {
+            document.getElementById('result').innerText = "¡Correcto! ¡Adivinaste el número!";
+        } else {
+            document.getElementById('result').innerText = "Incorrecto. Inténtalo de nuevo.";
+        }
+    }
+</script>
+
+<section id="adivinanza-multiple">
+    <h2>Juego de Adivinanzas de Múltiples Preguntas</h2>
+    <p>¿Estás listo para otro desafío? Responde las siguientes preguntas:</p>
+    
+    <form id="quizForm">
+        <h3>Pregunta 1:</h3>
+        <p>¿Cuál es el fruto favorito de Horace?</p>
+        <input type="radio" id="q1_option1" name="q1" value="manzana">
+        <label for="q1_option1">Manzana</label><br>
+        <input type="radio" id="q1_option2" name="q1" value="plátano">
+        <label for="q1_option2">Plátano</label><br>
+        <input type="radio" id="q1_option3" name="q1" value="zanahoria">
+        <label for="q1_option3">Zanahoria</label><br>
+
+        <h3>Pregunta 2:</h3>
+        <p>¿Cuál es el color del sombrero de Horace?</p>
+        <input type="radio" id="q2_option1" name="q2" value="rojo">
+        <label for="q2_option1">Rojo</label><br>
+        <input type="radio" id="q2_option2" name="q2" value="azul">
+        <label for="q2_option2">Azul</label><br>
+        <input type="radio" id="q2_option3" name="q2" value="verde">
+        <label for="q2_option3">Verde</label><br>
+
+        <button type="button" onclick="checkQuiz()">Verificar</button>
+    </form>
+
+    <p id="quizResult"></p>
+</section>
+
+<script>
+    function checkQuiz() {
+        var q1_answer = document.querySelector('input[name="q1"]:checked').value;
+        var q2_answer = document.querySelector('input[name="q2"]:checked').value;
+
+        if (q1_answer === "plátano" && q2_answer === "rojo") {
+            document.getElementById('quizResult').innerText = "¡Felicidades! ¡Has respondido correctamente a ambas preguntas! https://youtu.be/FybA0SaL0nI?feature=shared";
+        } else {
+            document.getElementById('quizResult').innerText = "Lo siento, al menos una de tus respuestas es incorrecta. ¡Inténtalo de nuevo!";
+        }
+    }
+</script>
+
+<section id="verdadero-falso">
+    <h2>Juego de Verdadero o Falso</h2>
+    <p>¿Crees que puedes distinguir entre lo verdadero y lo falso? ¡Demuéstralo respondiendo estas afirmaciones!</p>
+
+    <form id="trueFalseForm">
+        <h3>Afirmación 1:</h3>
+        <p>Horace es un elefante.</p>
+        <input type="radio" id="q1_true" name="q1" value="true">
+        <label for="q1_true">Verdadero</label><br>
+        <input type="radio" id="q1_false" name="q1" value="false">
+        <label for="q1_false">Falso</label><br>
+
+        <h3>Afirmación 2:</h3>
+        <p>La UFU es una fuente de energía misteriosa.</p>
+        <input type="radio" id="q2_true" name="q2" value="true">
+        <label for="q2_true">Verdadero</label><br>
+        <input type="radio" id="q2_false" name="q2" value="false">
+        <label for="q2_false">Falso</label><br>
+
+        <button type="button" onclick="checkTrueFalse()">Verificar</button>
+    </form>
+
+    <p id="trueFalseResult"></p>
+</section>
+
+<script>
+    function checkTrueFalse() {
+        var q1_answer = document.querySelector('input[name="q1"]:checked').value;
+        var q2_answer = document.querySelector('input[name="q2"]:checked').value;
+
+        if (q1_answer === "false" && q2_answer === "true") {
+            document.getElementById('trueFalseResult').innerText = "¡Correcto! Has respondido ambas afirmaciones correctamente. https://youtu.be/rKQSlr6OLqc?feature=shared";
+        } else {
+            document.getElementById('trueFalseResult').innerText = "Lo siento, al menos una de tus respuestas es incorrecta. ¡Inténtalo de nuevo!";
+        }
+    }
+</script>
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Transformación de un Jugador</title>
+    <style>
+        .story-container {
+            max-width: 750px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+        }
+    </style>
+</head>
+<body>
+    <div class="story-container">
+        <h2>LOS CUENTOS EXTRAVAGANTES Y DIVERTIDOS DE HORACE</h2>
+        <p>En una pequeña ciudad famosa por sus historias digitales, vivía un hombre admirado por su habilidad para entretener y crear. Él era el maestro de las risas, el arquitecto de enigmas que todos acudían a ver para escapar del gris de la rutina diaria. Sus juegos eran ventanas a mundos de fantasía, sus historias, un refugio seguro del mundo exterior.</p>
+        <p>Pero el hombre tenía una sed insaciable de innovación y un deseo de permanecer siempre en la cresta de la ola digital. Empezó a experimentar con formas de entretenimiento que bordeaban lo surreal. Los circos digitales que creaba eran más que simples juegos; eran experiencias que alteraban la mente, diseñadas para sumergir completamente a los participantes en realidades alteradas.</p>
+        <p>Con cada nuevo juego, el hombre se adentraba más en la esencia de lo efímero. Sus colaboraciones se volvieron más extravagantes, rodeado siempre de personajes tan coloridos como enigmáticos, que más parecían sacados de un carrusel de sueños y pesadillas. Lo que una vez fueron alegres interpretaciones de la realidad, gradualmente se tornaron en un laberinto de espejos distorsionados.</p>
+        <p>La noche del gran eclipse digital, el hombre presentó su obra maestra. Una competencia bajo la luz de la luna, donde el premio era el secreto último del universo digital. Pero aquel juego tenía un precio; se decía que quien entraba, nunca volvía a salir igual. Los ecos de sus pasos se perdían en un laberinto sin fin, y sus risas se transformaban en siniestros murmullos de código y luz neón.</p>
+        <p>Cuentan que en ese juego, el hombre perdió su humanidad. Su obsesión por conquistar el espectro digital lo consumió, dejando en su lugar una figura enmascarada, un avatar de su antiguo yo, que ahora ronda el mundo virtual, perpetuamente en busca de nuevos participantes para sus siniestros juegos. Este ser, vestido con la grotesca máscara de un caballo, es un recordatorio oscuro de que en la búsqueda del entretenimiento supremo, algo muy preciado puede perderse.</p>
+        <p>En la ciudad, ahora advierten a los jóvenes curiosos: cuidado con los juegos que eligen jugar, pues no todos los juegos están hechos solo para divertir.</p>
+    </div>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L̷̟̻̤̳̺̰̠̱̯̲̟͍̠̱̻͛̉̒̇̃̀͊̈́̓͘͘̕͘Ḁ̴̤̐͌̎̋̍̑̏̔̅̉̽̿͝ ̸̰͔̥̱̤̤͋͗̈́͘V̸̛̰̱̌̀̿́̍̒͑̇̿̕̚͘͘͜͜A̵̧̺̯͓͙̖̱͓͙̠͕͍̜̝̾̀̒̊͗̈́͊̏̉͐S̴̡͕͕͔̩̰͎̪͈̄̑̓͘͜͝ ̸̡̡͎͎̰̙̗̱̫̝̗͑̈́̈́̓̈͐̊̈̂͒́̾̅͘͜͠Ả̴͙͍̝̤͉̲͕̭̬̊͒́͗̆͒̑̕̚͘ ̴̘̝̩̗̺̫̯͔̯̫͚̎̌̒͜P̷̡̛͇̳̩̰̘͍̞̬̙͚̫͌̋͗͗̎͐̈́͘̕ͅA̷͎͇̥̋͊̈́̎̋̂͠S̸̨̨̱̱͇̱͂́̓͛͆͆́̈́̅̈́̅Å̷̖̱̭̺̦͕͖̖̥͚͒͊̆͂̎͌̈͛̀̉R̶̹͋̈́͜ ̸̡̢̭̞̼͕̯̭̦͎̙̦͎̻̤̏̈̒̆͌̎̏̀͊̓̄̕͠͝I̵͎̣̜̹͓̿̇̋͋̈́̌̈́̀̐Ǹ̴̡͇̹͇̲̮̆̃̇̃̓̓C̶̨̺͕̬̺͙̰̹͙̬͈͈͇̾̿̋͐̄̇̍͋̋̑͘͜͝͝R̸̭̣͗̀̌̈́̇̀͐̄̚Ȅ̶̮͖̞̲̍Ḯ̵̞̙̘̭͎̝̩̹̻̺͙͎̌̂̿͆̍̐̈̍̈́̍̊͜B̶̢̡͎̺̘̼͕͉̣̮̜̺͙̤̆Ḽ̵͒̓̍̀̀̒̋̾̓̿͊͝͝͠Ȇ̴̯͔̫̪̱̭̖̝̩̩̟̠͙̪͛͝ ̸̢̰̬͚̼̭̬̠̹̻̗̻̰̰̊͂̆͝C̸̩̜̟̱̱̰̝̪̮͉̝̩̥̀̿͗̂͊͐̑̒̈̈́́͌̂̕Õ̷̧̰͕̱̮͈͎̹̤̥̞̿͌͊̐̓͑͊̇͛͘Ņ̵͔̩̫̳̱͖̻̼͈̰͎͇̝̋̀̓͊̇̽̈́̈́̊̅͋̽ͅM̴̢̛̛̥̟̪̦̲̗̿̓́̑̈́̍̓̐͗̓Ï̷̢̨̛̭̹̣̦͙̮̽̀̓̌͊̀̊G̷̨̡̧̣̗̼̗̰͔͐͆̓̍̆̑̍̑̕̚͝O̷̚</title>
+    <style>
+        /* Estilos para el contenedor del video */
+        .video-container {
+            position: relative;
+            width: 640px; /* ajusta según tus necesidades */
+            height: 360px; /* ajusta según tus necesidades */
+            overflow: hidden;
+            background: #000;
+            opacity: 0; /* Inicialmente el video es apenas visible */
+            transition: opacity 0.5s ease; /* Transición suave de opacidad */
+        }
+
+        /* Estilos para el video */
+        video {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Cambia la opacidad cuando el usuario pasa el ratón sobre el contenedor */
+        .video-container:hover {
+            opacity: 1.0; /* Completa visibilidad cuando el mouse está encima */
+        }
+    </style>
+</head>
+<body>
+    <h1>L̷A̸ ̶V̶A̷S̸ ̴A̴ ̴P̷A̸S̷A̶R̷ ̷I̶N̸C̵R̴E̴I̵B̵L̸E̸ ̷C̸O̷N̴M̸I̵G̵O̵</h1>
+    <div class="video-container">
+        <!-- Reemplaza 'tu_video2.mp4' con el nombre de archivo de tu video -->
+        <video controls>
+            <source src="tu_video2.mp4" type="video/mp4">
+            Tu navegador no soporta el tag de video.
+        </video>
+    </div>
+</body>
+</html>
+
+
+
+<section>
+    <div class="parpadeo">
+        <img src="imagen-espeluznante.jpg" alt="Imagen inquietante">
+        <p>¡Sonríe! Hay algo en la oscuridad v̴i̷e̶n̷d̸o̴t̴e̴ ̷e̴n̶ ̵t̶o̷d̶o̵ ̵m̵o̶m̶e̵n̵t̷o̷.̶</p>
+    </div>
+</section>
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Miedo</title>
+</head>
+<body>
+
+<h1>Bienvenido al Juego de Miedo</h1>
+
+<p>Estás caminando solo por un oscuro y espeluznante bosque. De repente, te encuentras frente a una bifurcación en el camino. ¿Qué decides hacer?</p>
+
+<button onclick="elegirCamino('izquierda')">Ir a la izquierda</button>
+<button onclick="elegirCamino('derecha')">Ir a la derecha</button>
+
+<p id="resultado"></p>
+
+<script>
+function elegirCamino(opcion) {
+    if (opcion === 'izquierda') {
+        document.getElementById('resultado').innerHTML = "Decidiste ir a la izquierda. Sigues caminando y te encuentras con una antigua mansión abandonada. ¿Quieres entrar?";
+        document.getElementById('resultado').innerHTML += "<button onclick=\"entrarMansion('si')\">Sí</button>";
+        document.getElementById('resultado').innerHTML += "<button onclick=\"entrarMansion('no')\">No</button>";
+    } else if (opcion === 'derecha') {
+        document.getElementById('resultado').innerHTML = "Decidiste ir a la derecha. Avanzas por el sendero y escuchas ruidos extraños detrás de ti. ¿Quieres seguir adelante o regresar?";
+        document.getElementById('resultado').innerHTML += "<button onclick=\"seguirAdelante()\">Seguir adelante</button>";
+        document.getElementById('resultado').innerHTML += "<button onclick=\"regresar()\">Regresar</button>";
+    }
+}
+
+function entrarMansion(decision) {
+    if (decision === 'si') {
+        document.getElementById('resultado').innerHTML = "Entraste en la mansión y te encuentras con una escalera que conduce al sótano. ¿Quieres bajar?";
+        document.getElementById('resultado').innerHTML += "<button onclick=\"bajarSotano('si')\">Sí</button>";
+        document.getElementById('resultado').innerHTML += "<button onclick=\"bajarSotano('no')\">No</button>";
+    } else if (decision === 'no') {
+        document.getElementById('resultado').innerHTML = "Decidiste no entrar en la mansión. Continúas tu camino en busca de una salida...";
+    }
+}
+
+function bajarSotano(decision) {
+    if (decision === 'si') {
+        document.getElementById('resultado').innerHTML = "Bajas al sótano y encuentras una vieja caja fuerte. ¿Quieres intentar abrirla?";
+        document.getElementById('resultado').innerHTML += "<button onclick=\"abrirCajaFuerte()\">Sí</button>";
+        document.getElementById('resultado').innerHTML += "<button onclick=\"noAbrirCajaFuerte()\">No</button>";
+    } else if (decision === 'no') {
+        document.getElementById('resultado').innerHTML = "Decidiste no bajar al sótano. Te das la vuelta para salir de la mansión...";
+    }
+}
+
+function seguirAdelante() {
+    document.getElementById('resultado').innerHTML = "Decidiste seguir adelante. Avanzas por el sendero, pero el camino se vuelve más estrecho y oscuro. De repente, una figura se mueve entre los árboles y te asusta. ¿Quieres continuar o regresar?";
+    document.getElementById('resultado').innerHTML += "<button onclick=\"continuar()\">Continuar</button>";
+    document.getElementById('resultado').innerHTML += "<button onclick=\"regresar()\">Regresar</button>";
+}
+
+function regresar() {
+    document.getElementById('resultado').innerHTML = "Decidiste regresar. Retrocedes por el sendero y te encuentras en la bifurcación nuevamente...";
+}
+
+function abrirCajaFuerte() {
+    document.getElementById('resultado').innerHTML = "Decidiste intentar abrir la caja fuerte. Al abrir la caja, encuentras un antiguo diario con escrituras perturbadoras. Mientras lo lees, escuchas pasos detrás de ti...";
+    document.getElementById('resultado').innerHTML += "<button onclick=\"mirarAtras()\">Mirar atrás</button>";
+}
+
+function noAbrirCajaFuerte() {
+    document.getElementById('resultado').innerHTML = "Decidiste no intentar abrir la caja fuerte. Prefieres no arriesgarte y decides salir de la mansión...";
+}
+
+function continuar() {
+    document.getElementById('resultado').innerHTML = "Decidiste continuar. Sigues avanzando por el oscuro sendero, pero cada vez te sientes más inquieto...";
+    document.getElementById('resultado').innerHTML += "<button onclick=\"sentirInquietud()\">Seguir adelante</button>";
+}
+
+function sentirInquietud() {
+    document.getElementById('resultado').innerHTML = "Sientes una presencia oscura a tu alrededor. De repente, una mano helada toca tu hombro...";
+    document.getElementById('resultado').innerHTML += "<button onclick=\"juegoTerminado()\">¡Gritar y correr!</button>";
+}
+
+function mirarAtras() {
+    document.getElementById('resultado').innerHTML = "Miras hacia atrás y ves una figura oscura acercándose lentamente...";
+    document.getElementById('resultado').innerHTML += "<button onclick=\"juegoTerminado()\">¡Correr y gritar!</button>";
+}
+
+function juegoTerminado() {
+    document.getElementById('resultado').innerHTML = "¡Has llegado al final del juego! ¿Quieres jugar de nuevo?";
+    document.getElementById('resultado').innerHTML += "<button onclick=\"window.location.reload()\">Jugar de nuevo</button>";
+
+    // Mostrar el video
+    var video = document.getElementById('videoFinal');
+    video.style.display = "block";
+    video.play();
+}
+
+</script>
+
+</body>
+</html>
+
+<video id="videoFinal" width="320" height="240" controls style="display: none;">
+    <source src="tu_video.mp4" type="video/mp4">
+    Tu navegador no soporta videos HTML5.
+</video>
+
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>¿Listos para unirse a la aventura? Envíen un mensaje a Horace y únanse al juego.</p>
+            <form action="#" method="post">
+                <label for="mensaje">Mensaje para Horace:</label><br>
+                <textarea id="mensaje" name="mensaje" rows="4" cols="50"></textarea><br>
+                <input type="submit" value="Enviar">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 El Juego de Horace - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
